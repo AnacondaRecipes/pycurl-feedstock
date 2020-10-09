@@ -19,8 +19,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - openssl
+    - openssl    # [win]
   host:
+    - openssl    # [not win]
     - python
     - libcurl
   run:
