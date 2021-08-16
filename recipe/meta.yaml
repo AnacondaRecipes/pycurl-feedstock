@@ -1,6 +1,6 @@
 {% set name = "pycurl" %}
-{% set version = "7.43.0.6" %}
-{% set sha256 = "8301518689daefa53726b59ded6b48f33751c383cf987b0ccfbbc4ed40281325" %}
+{% set version = "7.44.0" %}
+{% set sha256 = "2ce9905626d8ceafcbadee666e2f45397e29c7618ddcdc63fc22d85e5046c6d6" %}
 
 package:
   name: {{ name }}
@@ -20,12 +20,13 @@ requirements:
   build:
     - {{ compiler('c') }}
     - openssl    # [win]
+    - m2-patch   # [win]
   host:
     - openssl    # [not win]
-    - python
-    - libcurl
+    - python >=3.5
+    - libcurl >=7.19.0
   run:
-    - python
+    - python >=3.5
 
 test:
   imports:
