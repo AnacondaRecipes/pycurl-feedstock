@@ -20,12 +20,13 @@ requirements:
   build:
     - {{ compiler('c') }}
     - openssl    # [win]
+    - m2-patch   # [win]
   host:
     - openssl    # [not win]
-    - python
-    - libcurl
+    - python >=3.5
+    - libcurl >=7.19.0
   run:
-    - python
+    - python >=3.5
 
 test:
   imports:
