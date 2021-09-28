@@ -13,8 +13,9 @@ source:
     - msvc_warnings.patch                     # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: False
+  skip: true  # [py<35]
 
 requirements:
   build:
@@ -23,10 +24,10 @@ requirements:
     - m2-patch   # [win]
   host:
     - openssl    # [not win]
-    - python >=3.5
+    - python
     - libcurl >=7.19.0
   run:
-    - python >=3.5
+    - python
 
 test:
   imports:
