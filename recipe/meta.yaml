@@ -13,7 +13,7 @@ source:
     - msvc_warnings.patch                     # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: False
   skip: true  # [py<35]
 
@@ -22,6 +22,9 @@ requirements:
     - {{ compiler('c') }}
     - openssl    # [win]
     - m2-patch   # [win]
+    - setuptools
+    - wheel
+    - pip
   host:
     - openssl    # [not win]
     - python
@@ -33,10 +36,14 @@ test:
   imports:
     - curl
     - pycurl
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: http://pycurl.sourceforge.net/
-  license: LGPL, MIT
+  license: LGPL-2.1-only, MIT
   license_file: COPYING-LGPL
   license_family: LGPL
   summary: A Python Interface To The cURL library
