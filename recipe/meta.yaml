@@ -33,9 +33,6 @@ requirements:
     - python
 
 test:
-  imports:
-    - curl
-    - pycurl
   requires:
     - pip
   commands:
