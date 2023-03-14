@@ -25,7 +25,7 @@ requirements:
   host:
     - openssl    # [not win]
     - python
-    - libcurl >=7.19.0
+    - libcurl 7.71.1 
     - setuptools
     - wheel
     - pip
