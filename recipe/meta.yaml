@@ -39,9 +39,11 @@ test:
     - pip check
 
 about:
-  home: http://pycurl.sourceforge.net/
-  license: LGPL-2.1-only, MIT
-  license_file: COPYING-LGPL
+  home: http://pycurl.io/
+  license: LGPL-2.1-or-later OR MIT
+  license_file: 
+    - COPYING-LGPL
+    - COPYING-MIT
   license_family: LGPL
   summary: A Python Interface To The cURL library
   description: |
