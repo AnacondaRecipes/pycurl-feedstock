@@ -1,6 +1,6 @@
 {% set name = "pycurl" %}
-{% set version = "7.45.1" %}
-{% set sha256 = "a863ad18ff478f5545924057887cdae422e1b2746e41674615f687498ea5b88a" %}
+{% set version = "7.45.2" %}
+{% set sha256 = "5730590be0271364a5bddd9e245c9cc0fb710c4cbacbdd95264a3122d23224ca" %}
 
 package:
   name: {{ name }}
@@ -25,7 +25,7 @@ requirements:
   host:
     - openssl    # [not win]
     - python
-    - libcurl >=7.19.0
+    - libcurl 7.71.1 
     - setuptools
     - wheel
     - pip
@@ -33,18 +33,17 @@ requirements:
     - python
 
 test:
-  imports:
-    - curl
-    - pycurl
   requires:
     - pip
   commands:
     - pip check
 
 about:
-  home: http://pycurl.sourceforge.net/
-  license: LGPL-2.1-only, MIT
-  license_file: COPYING-LGPL
+  home: http://pycurl.io/
+  license: LGPL-2.1-or-later OR MIT
+  license_file: 
+    - COPYING-LGPL
+    - COPYING-MIT
   license_family: LGPL
   summary: A Python Interface To The cURL library
   description: |
@@ -52,7 +51,6 @@ about:
     Similarly to the urllib Python module, PycURL can be used to fetch objects identified
     by a URL from a Python program.
   doc_url: http://pycurl.io/docs/latest/index.html
-  doc_source_url: https://github.com/pycurl/pycurl/blob/master/doc/index.rst
   dev_url: https://github.com/pycurl/pycurl
 
 extra:
