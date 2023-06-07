@@ -1,6 +1,5 @@
 #!/bin/bash
 
-$PYTHON setup.py install --curl-config=$PREFIX/bin/curl-config \
-    --openssl-dir=$PREFIX
+$PYTHON -m pip install . -vv --no-deps --no-build-isolation
 
 rm -rf $PREFIX/share
