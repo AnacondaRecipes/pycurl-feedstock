@@ -13,7 +13,7 @@ source:
     - msvc_warnings.patch                     # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: False
   skip: true  # [py<35]
 
@@ -23,14 +23,15 @@ requirements:
     - openssl    # [win]
     - m2-patch   # [win]
   host:
-    - openssl    # [not win]
+    - openssl {{ openssl }}   # [not win]
     - python
-    - libcurl 7.71.1 
+    - libcurl 7.88.1
     - setuptools
     - wheel
     - pip
   run:
     - python
+    - openssl 3.*
 
 test:
   requires:
@@ -54,5 +55,7 @@ about:
   dev_url: https://github.com/pycurl/pycurl
 
 extra:
+  skip-lints:
+    - http_url
   recipe-maintainers:
     - chrisburr
