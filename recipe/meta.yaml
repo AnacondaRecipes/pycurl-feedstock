@@ -33,7 +33,7 @@ requirements:
     - pip
   run:
     - python
-    - openssl 3.*
+    - openssl  # [not win]
 
 test:
   requires:
