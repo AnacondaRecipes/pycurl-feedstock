@@ -1,6 +1,6 @@
 {% set name = "pycurl" %}
-{% set version = "7.45.3" %}
-{% set sha256 = "8c2471af9079ad798e1645ec0b0d3d4223db687379d17dd36a70637449f81d6b" %}
+{% set version = "7.45.4" %}
+{% set sha256 = "32c8e237069273f4260b6ae13d1e0f99daae938977016021565dc6e11050e803" %}
 
 package:
   name: {{ name }}
@@ -10,8 +10,7 @@ source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    - patches/msvc_warnings.patch                     # [win]
-    - patches/swap_bottle_for_flask.patch
+    - patches/msvc_warnings.patch  # [win]
 
 build:
   number: 0
@@ -21,16 +20,15 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - openssl    # [win]
     - m2-patch   # [win]
-    - patch      # [unix]
+    - openssl    # [win]
   host:
-    - openssl {{ openssl }}   # [not win]
     - python
-    - libcurl 7.88.1
     - setuptools
     - wheel
     - pip
+    - libcurl {{ libcurl }}
+    - openssl {{ openssl }}  # [not win]
   run:
     - python
     - openssl  # [not win]
@@ -38,7 +36,6 @@ requirements:
 test:
   requires:
     - pip
-    # Running unit tests requires bottle, using flask instead via patch file.
     - pytest >=5
     - flask
     - flaky
@@ -51,7 +48,9 @@ test:
   commands:
     - pip check
     # Skip tests for SSL backends we don't support.
-    - pytest -v tests -k "not (test_keyfunction or test_proxy_tlsauth or test_libcurl_ssl_gnutls or test_libcurl_ssl_nss or test_libcurl_ssl_openssl)"
+    # TLS 1.3 cipher configuration is supporting starting with curl 8.10.0. The test_*tls13_ciphers tests may be
+    # enabled again once this is the supported version in the CBC. https://github.com/curl/curl/issues/13873
+    - pytest -v tests -k "not (test_keyfunction or test_proxy_tlsauth or test_libcurl_ssl_gnutls or test_libcurl_ssl_nss or test_libcurl_ssl_openssl or test_tls13_ciphers or test_proxy_tls13_ciphers)"
 
 about:
   home: http://pycurl.io/
