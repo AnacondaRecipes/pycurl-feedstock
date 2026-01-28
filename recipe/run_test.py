@@ -1,9 +1,13 @@
 import curl
 import pycurl
+
+
 try:
     from cStringIO import StringIO as BytesIO
 except:
     from io import BytesIO
+
+print(pycurl.version)
 
 buf = BytesIO()
 
