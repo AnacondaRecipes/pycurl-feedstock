@@ -45,7 +45,7 @@ test:
     - flask
     - flaky
     - pyflakes
-    # for tests/setup_test.py
+    # For tests/setup_test.py
     - setuptools
 
 about:
