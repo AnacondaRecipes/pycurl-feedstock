@@ -10,7 +10,7 @@ source:
   sha256: 9d43013002eab2fd6d0dcc671cd1e9149e2fc1c56d5e796fad94d076d6cb69ef
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<39]
 
 requirements:
@@ -27,6 +27,7 @@ requirements:
     - openssl {{ openssl }}
   run:
     - python
+    - libcurl
     - openssl
 
 test:
@@ -44,6 +45,8 @@ test:
     - flask
     - flaky
     - pyflakes
+    # for tests/setup_test.py
+    - setuptools
 
 about:
   home: http://pycurl.io
