@@ -46,9 +46,11 @@ test:
     - pytest >=5
     - flask
     - flaky
+    - numpy
     - pyflakes
     # For tests/setup_test.py
     - setuptools
+    - websockets >=12.0
   commands:
     - pip check
 
