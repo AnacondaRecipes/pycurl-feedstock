@@ -1,5 +1,5 @@
 {% set name = "pycurl" %}
-{% set version = "7.45.7" %}
+{% set version = "7.46.0" %}
 
 package:
   name: {{ name }}
@@ -7,14 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9d43013002eab2fd6d0dcc671cd1e9149e2fc1c56d5e796fad94d076d6cb69ef
-  patches:
-    # Skip Kerberos tests on libcurl >= 8.17.0, see https://github.com/pycurl/pycurl/pull/909`
-    - 909.patch
+  sha256: 422ed7005b98768fe60fe6b6cb8bb6a4e1fc18b5433402e8fbdaba91811c4604
 
 build:
-  number: 1
-  skip: true  # [py<39]
+  number: 0
+  skip: true  # [py<310]
 
 requirements:
   build:
@@ -24,7 +21,7 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
+    - setuptools >=77
     - wheel
     - libcurl {{ libcurl }}
     - openssl {{ openssl }}
@@ -39,6 +36,8 @@ test:
     - pytest.ini
     - README.rst
     - setup.py
+  imports:
+    - pycurl
   requires:
     - {{ stdlib('c') }}  # [not win]
     - {{ compiler('c') }}  # [not win]
@@ -47,13 +46,17 @@ test:
     - pytest >=5
     - flask
     - flaky
+    - numpy
     - pyflakes
     # For tests/setup_test.py
     - setuptools
+    - websockets >=12.0
+  commands:
+    - pip check
 
 about:
   home: http://pycurl.io
-  license: LGPL-2.1-or-later OR MIT
+  license: LGPL-2.1-only OR MIT
   license_file:
     - COPYING-LGPL
     - COPYING-MIT
