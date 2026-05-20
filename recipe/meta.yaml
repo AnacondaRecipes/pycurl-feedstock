@@ -10,6 +10,7 @@ source:
   sha256: 422ed7005b98768fe60fe6b6cb8bb6a4e1fc18b5433402e8fbdaba91811c4604
 
 build:
+  # trigger 1
   number: 0
   skip: true  # [py<310]
 
