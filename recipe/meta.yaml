@@ -56,7 +56,7 @@ test:
     - pip check
 
 about:
-  home: http://pycurl.io
+  home: https://pycurl.github.io/
   license: LGPL-2.1-only OR MIT
   license_file:
     - COPYING-LGPL
@@ -67,11 +67,9 @@ about:
     PycURL is a Python interface to libcurl, the multiprotocol file transfer library.
     Similarly to the urllib Python module, PycURL can be used to fetch objects identified
     by a URL from a Python program.
-  doc_url: http://pycurl.io/docs/latest/index.html
+  doc_url: https://pycurl.github.io/
   dev_url: https://github.com/pycurl/pycurl
 
 extra:
-  skip-lints:
-    - http_url
   recipe-maintainers:
     - chrisburr
