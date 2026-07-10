@@ -18,7 +18,6 @@ requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - openssl  # [win]
   host:
     - pip
     - python
