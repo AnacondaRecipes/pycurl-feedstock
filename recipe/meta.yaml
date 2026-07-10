@@ -25,11 +25,11 @@ requirements:
     - setuptools >=77
     - wheel
     - libcurl {{ libcurl }}
-    - openssl {{ openssl }}
+    - openssl {{ openssl }} # [not win] using schannel on windows
   run:
     - python
     - libcurl
-    - openssl
+    - openssl # [not win] using schannel on windows
 
 test:
   source_files:
