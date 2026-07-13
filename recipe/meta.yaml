@@ -1,5 +1,5 @@
 {% set name = "pycurl" %}
-{% set version = "7.46.0" %}
+{% set version = "7.47.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 422ed7005b98768fe60fe6b6cb8bb6a4e1fc18b5433402e8fbdaba91811c4604
+  sha256: 5e3cf357939da8d4ceefe3c7f305afcf9b47cba66cfd95e7768ca43b38445e14
 
 build:
   # trigger 1
@@ -18,18 +18,17 @@ requirements:
   build:
     - {{ stdlib('c') }}
     - {{ compiler('c') }}
-    - openssl  # [win]
   host:
     - pip
     - python
     - setuptools >=77
     - wheel
     - libcurl {{ libcurl }}
-    - openssl {{ openssl }}
+    - openssl {{ openssl }} # [not win] using schannel on windows
   run:
     - python
     - libcurl
-    - openssl
+    - openssl # [not win] using schannel on windows
 
 test:
   source_files:
@@ -56,7 +55,7 @@ test:
     - pip check
 
 about:
-  home: http://pycurl.io
+  home: https://pycurl.github.io/
   license: LGPL-2.1-only OR MIT
   license_file:
     - COPYING-LGPL
@@ -67,11 +66,9 @@ about:
     PycURL is a Python interface to libcurl, the multiprotocol file transfer library.
     Similarly to the urllib Python module, PycURL can be used to fetch objects identified
     by a URL from a Python program.
-  doc_url: http://pycurl.io/docs/latest/index.html
+  doc_url: https://pycurl.github.io/
   dev_url: https://github.com/pycurl/pycurl
 
 extra:
-  skip-lints:
-    - http_url
   recipe-maintainers:
     - chrisburr
