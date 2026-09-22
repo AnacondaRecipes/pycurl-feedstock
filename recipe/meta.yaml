@@ -1,5 +1,5 @@
 {% set name = "pycurl" %}
-{% set version = "7.47.0" %}
+{% set version = "7.48.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5e3cf357939da8d4ceefe3c7f305afcf9b47cba66cfd95e7768ca43b38445e14
+  sha256: b70961a76c412cd34f9cc2c9558e63f89fb37045c59eee396c585b52973be280
 
 build:
   # trigger 1
@@ -24,11 +24,11 @@ requirements:
     - setuptools >=77
     - wheel
     - libcurl {{ libcurl }}
-    - openssl {{ openssl }} # [not win] using schannel on windows
+    - openssl {{ openssl }}  # [not win] using schannel on windows
   run:
     - python
     - libcurl
-    - openssl # [not win] using schannel on windows
+    - openssl  # [not win] using schannel on windows
 
 test:
   source_files:
